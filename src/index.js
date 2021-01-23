@@ -1,4 +1,4 @@
-import "./wdyr"; // not sure if it works
+import "./wdyr"; // not sure whether it's working
 
 import React from "react";
 import ReactDOM from "react-dom";
