@@ -17,6 +17,7 @@ describe("<MainPage />", () => {
   });
 
   it("renders MainPage without crashing", () => {
+    console.log(wrapper.debug());
     expect(wrapper).toMatchSnapshot();
   });
 
