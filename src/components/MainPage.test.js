@@ -1,7 +1,7 @@
-import { shallow } from "enzyme";
-import MainPage from "../components/MainPage";
+import { shallow } from 'enzyme';
+import MainPage from '../components/MainPage';
 
-describe("<MainPage />", () => {
+describe('<MainPage />', () => {
   let wrapper,
     mockProps = {};
 
@@ -10,49 +10,49 @@ describe("<MainPage />", () => {
     mockProps = {
       onRequestRobots: jest.fn(),
       robots: [],
-      searchField: "",
+      searchField: '',
       isPending: false,
     };
     wrapper = shallow(<MainPage {...mockProps} />);
   });
 
-  it("renders MainPage without crashing", () => {
+  it('renders MainPage without crashing', () => {
     console.log(wrapper.debug());
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("renders a loading text while pending", () => {
+  it('renders a loading text while pending', () => {
     Object.assign(mockProps, { isPending: true });
     wrapper = shallow(<MainPage {...mockProps} />);
 
     expect(wrapper.contains(<h1>Loading...</h1>)).toEqual(true);
   });
 
-  it("filters robots correctly", () => {
+  it('filters robots correctly', () => {
     Object.assign(mockProps, {
       robots: [
         {
           id: 3,
-          name: "John",
-          email: "john@email.com",
+          name: 'John',
+          email: 'john@email.com',
         },
       ],
-      searchField: "John",
+      searchField: 'John',
     });
     wrapper = shallow(<MainPage {...mockProps} />);
 
-    expect(wrapper.instance().filteredRobots()[0].name).toEqual("John");
+    expect(wrapper.instance().filteredRobots()[0].name).toEqual('John');
     expect(wrapper.instance().filteredRobots()[0].id).toEqual(3);
     expect(wrapper.instance().filteredRobots()).toEqual([
       {
         id: 3,
-        name: "John",
-        email: "john@email.com",
+        name: 'John',
+        email: 'john@email.com',
       },
     ]);
 
     Object.assign(mockProps, {
-      searchField: "a",
+      searchField: 'a',
     });
     const filteredRobots = [];
     wrapper = shallow(<MainPage {...mockProps} />);
